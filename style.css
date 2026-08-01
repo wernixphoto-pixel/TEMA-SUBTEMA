@@ -1,0 +1,65 @@
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:transparent;
+}
+
+/* ========================= */
+
+#themeBox{
+    position:fixed;
+    left:50%;
+    bottom:70px;
+    transform:translateX(-50%);
+    z-index:999;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    pointer-events:none;
+}
+
+/* Tema */
+
+#themeTitle{
+    color:#fff;
+    font-size:34px;
+    font-weight:700;
+    text-transform:uppercase;
+    white-space:nowrap;
+
+    opacity:0;
+    transform:translateX(-70px);
+
+    text-shadow:2px 2px 5px rgba(0,0,0,.55);
+}
+
+/* Garis bawah */
+
+#themeLine{
+    width:0;
+    height:3px;
+    margin:8px 0 10px;
+
+    background:#ffffff;
+    border-radius:10px;
+}
+
+/* Sub Tema */
+
+#themeSubtitle{
+    color:#fff;
+    font-size:24px;
+    font-weight:500;
+    white-space:nowrap;
+
+    opacity:0;
+    transform:translateX(-70px);
+
+    text-shadow:2px 2px 5px rgba(0,0,0,.55);
+}
