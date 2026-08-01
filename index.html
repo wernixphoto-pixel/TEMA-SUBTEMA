@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -21,218 +20,132 @@ body{
     font-family:Arial,Helvetica,sans-serif;
 }
 
-/* ============================== */
-
 #themeWrap{
-
     position:absolute;
-
     left:50%;
     bottom:90px;
-
     transform:translateX(-50%);
-
-    padding:16px 28px;
-
-    background:rgba(0,0,0,.45);
-    backdrop-filter:blur(10px);
-
-    border-radius:14px;
-
     text-align:center;
 
     opacity:0;
     visibility:hidden;
-
     transition:opacity 2s ease;
-
 }
-
-/* ============================== */
 
 #themeTitle{
-
     display:inline-block;
-
     color:#fff;
-
     font-size:34px;
-
     font-weight:bold;
-
     letter-spacing:1px;
 
+    text-shadow:0 2px 8px rgba(0,0,0,.55);
+
     opacity:0;
-
     transform:translateX(-70px);
-
 }
-
-/* ============================== */
 
 #themeLine{
-
     width:100%;
-
     height:3px;
-
-    margin:8px 0 10px;
+    margin:8px 0 4px;
 
     background:#fff;
-
     border-radius:20px;
 
+    box-shadow:0 0 8px rgba(255,255,255,.35);
+
     opacity:0;
-
     transform:scaleX(0);
-
     transform-origin:left center;
-
 }
-
-/* ============================== */
 
 #themeSubtitle{
-
     color:#fff;
-
     font-size:22px;
 
+    text-shadow:0 2px 8px rgba(0,0,0,.55);
+
     opacity:0;
-
     transform:translateX(-70px);
-
 }
-
-/* ============================== */
 
 #themeWrap.show{
-
     opacity:1;
-
     visibility:visible;
-
 }
-
-/* ============================== */
 
 #themeTitle.show{
-
     animation:titleIn .8s ease forwards;
-
-}
-
-#themeSubtitle.show{
-
-    animation:subtitleIn .8s ease forwards;
-
 }
 
 #themeLine.show{
-
     animation:lineIn .6s ease forwards;
-
 }
 
-/* ============================== */
+#themeSubtitle.show{
+    animation:subtitleIn .8s ease forwards;
+}
 
 #themeWrap.fadeout{
-
     opacity:0;
-
 }
 
 #themeWrap.fadeout #themeTitle,
 #themeWrap.fadeout #themeSubtitle{
-
     opacity:0;
-
     transform:translateX(40px);
 
     transition:
         opacity 2s ease,
         transform 2s ease;
-
 }
 
 #themeWrap.fadeout #themeLine{
-
     opacity:0;
-
     transform:scaleX(0);
-
     transform-origin:right center;
 
     transition:
         opacity 2s ease,
         transform 2s ease;
-
 }
-
-/* ============================== */
 
 @keyframes titleIn{
-
 from{
-
     opacity:0;
-
     transform:translateX(-70px);
-
 }
-
 to{
-
     opacity:1;
-
     transform:translateX(0);
-
 }
-
-}
-
-@keyframes subtitleIn{
-
-from{
-
-    opacity:0;
-
-    transform:translateX(-70px);
-
-}
-
-to{
-
-    opacity:1;
-
-    transform:translateX(0);
-
-}
-
 }
 
 @keyframes lineIn{
-
 from{
-
     opacity:0;
-
     transform:scaleX(0);
-
 }
-
 to{
-
     opacity:1;
-
     transform:scaleX(1);
-
+}
 }
 
+@keyframes subtitleIn{
+from{
+    opacity:0;
+    transform:translateX(-70px);
 }
-
+to{
+    opacity:1;
+    transform:translateX(0);
+}
+}
 </style>
 </head>
+
 <body>
 
 <div id="themeWrap">
@@ -263,11 +176,10 @@ const LOOP_TIME=180000;
 function resetAnimation(){
 
     title.classList.remove("show");
-    subtitle.classList.remove("show");
     line.classList.remove("show");
+    subtitle.classList.remove("show");
 
     void title.offsetWidth;
-
 }
 
 function showTheme(){
@@ -278,27 +190,19 @@ function showTheme(){
     resetAnimation();
 
     setTimeout(function(){
-
         title.classList.add("show");
-
     },150);
 
     setTimeout(function(){
-
-        subtitle.classList.add("show");
-
+        line.classList.add("show");
     },450);
 
     setTimeout(function(){
-
-        line.classList.add("show");
-
+        subtitle.classList.add("show");
     },750);
 
     setTimeout(function(){
-
         box.classList.add("fadeout");
-
     },SHOW_TIME-FADE_TIME);
 
     setTimeout(function(){
@@ -307,15 +211,14 @@ function showTheme(){
         box.classList.remove("fadeout");
 
         title.classList.remove("show");
-        subtitle.classList.remove("show");
         line.classList.remove("show");
+        subtitle.classList.remove("show");
 
     },SHOW_TIME);
 
 }
 
 setTimeout(showTheme,2000);
-
 setInterval(showTheme,LOOP_TIME);
 
 </script>
