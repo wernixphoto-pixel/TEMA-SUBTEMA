@@ -1,6 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tema Acara</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:transparent;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+#themeBox{
+    position:fixed;
+    left:50%;
+    bottom:70px;
+    transform:translateX(-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    opacity:1;
+    pointer-events:none;
+}
+
+#themeTitle{
+    color:#fff;
+    font-size:34px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    white-space:nowrap;
+
+    opacity:0;
+    transform:translateX(-70px);
+
+    text-shadow:2px 2px 6px rgba(0,0,0,.6);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+}
+
+#themeLine{
+    width:0;
+    height:3px;
+    margin:8px 0 10px;
+    border-radius:10px;
+    background:#fff;
+    transition:width .35s ease;
+}
+
+#themeSubtitle{
+    color:#fff;
+    font-size:24px;
+    font-weight:500;
+    white-space:nowrap;
+
+    opacity:0;
+    transform:translateX(-70px);
+
+    text-shadow:2px 2px 6px rgba(0,0,0,.6);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+}
+</style>
+</head>
+
+<body>
+
 <div id="themeBox">
 
-    <div id="themeTitle">TEMA ACARA</div>
+    <div id="themeTitle">
+        TEMA ACARA
+    </div>
 
     <div id="themeLine"></div>
 
@@ -9,3 +93,84 @@
     </div>
 
 </div>
+
+<script>
+
+window.onload=function(){
+
+const box=document.getElementById("themeBox");
+const title=document.getElementById("themeTitle");
+const line=document.getElementById("themeLine");
+const subtitle=document.getElementById("themeSubtitle");
+
+function reset(){
+
+    box.style.opacity="1";
+
+    title.style.opacity="0";
+    subtitle.style.opacity="0";
+
+    title.style.transform="translateX(-70px)";
+    subtitle.style.transform="translateX(-70px)";
+
+    line.style.width="0px";
+
+}
+
+function play(){
+
+    reset();
+
+    setTimeout(()=>{
+
+        const fullWidth=title.offsetWidth;
+
+        title.style.opacity="1";
+        title.style.transform="translateX(0)";
+
+        setTimeout(()=>{
+
+            subtitle.style.opacity="1";
+            subtitle.style.transform="translateX(0)";
+
+        },180);
+
+        setTimeout(()=>{
+
+            line.style.width=fullWidth+"px";
+
+        },360);
+
+    },20);
+
+    setTimeout(()=>{
+
+        box.style.transition="opacity .8s ease";
+        box.style.opacity="0";
+
+    },30000);
+
+    setTimeout(()=>{
+
+        box.style.transition="none";
+
+        reset();
+
+    },30850);
+
+}
+
+setTimeout(()=>{
+
+    play();
+
+    setInterval(play,180000);
+
+},2000);
+
+};
+
+</script>
+
+</body>
+</html>
